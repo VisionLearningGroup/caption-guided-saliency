@@ -89,7 +89,7 @@ You can change model's parameters (dimensionality of layers, learning rate etc.)
 
 ### References
 
-[1]: https://visionlearninggroup.github.io/caption-guided-saliency/
+[1]: https://arxiv.org/abs/1612.07360
     
 
 If you find this useful in your work please consider citing:
