@@ -64,7 +64,7 @@ This step takes ~30mins for Flickr30k and ~2h for MSR-VTT.
 
 **Run training**
 ```bash
-$ python preprocessing.py --dataset {MSR-VTT|Flickr30k}
+$ python run_s2vt.py --dataset {MSR-VTT|Flickr30k}
 ```
 We do not finetune CNN part of the model, thus, training on GPU takes only several hours. Training/validation/test splits for Flickr30k are taken from [NeuralTalk](https://github.com/karpathy/neuraltalk). After the training you can run evaluation of the model:
 
