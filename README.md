@@ -15,7 +15,7 @@ $ git clone --recursive git@github.com:VisionLearningGroup/caption-guided-salien
 The model is implemented using TensorFlow framework, Python 2.7. For TensorFlow installation please refer to the official [Installing TensorFlow](https://www.tensorflow.org/install/) guide or simply:
 
 ```bash
-$ pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.0.1-cp27-none-linux_x86_64.whl
+$ pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.1.0-cp27-none-linux_x86_64.whl
 ```
 *Warning!* The standard version of TensorFlow gives the warnings like:
 ```
