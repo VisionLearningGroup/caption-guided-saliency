@@ -197,25 +197,28 @@ def train():
     with open(cfg.vocab_path + 'wordtoix.pkl', 'wb') as outfile:
         pkl.dump(wordtoix, outfile)
     
-    model_train = s2vt(dim_image=cfg.dim_image,
-                       n_words=len(ixtoword),
-                       dim_hidden=cfg.dim_hidden,
-                       batch_size=cfg.batch_size,
-                       n_frame_steps=cfg.n_frame_step,
-                       n_lstm_steps=cfg.n_lstm_step,
-                       dim_word_emb = cfg.dim_word_emb,
-                       cell_clip = cfg.cell_clip,
-                       forget_bias = cfg.forget_bias,
-                       input_keep_prob = cfg.input_keep_prob,
-                       output_keep_prob = cfg.output_keep_prob,
-                       bias_init_vector=bias_init_vector)
-
-    tf_loss, tf_video, tf_caption, tf_caption_mask, _ = model_train.build_model("training")
     sess = tf.InteractiveSession(config=tf.ConfigProto(gpu_options=gpu_options))
+    
+    with tf.variable_scope(tf.get_variable_scope()):
+        model_train = s2vt(dim_image=cfg.dim_image,
+                           n_words=len(ixtoword),
+                           dim_hidden=cfg.dim_hidden,
+                           batch_size=cfg.batch_size,
+                           n_frame_steps=cfg.n_frame_step,
+                           n_lstm_steps=cfg.n_lstm_step,
+                           dim_word_emb = cfg.dim_word_emb,
+                           cell_clip = cfg.cell_clip,
+                           forget_bias = cfg.forget_bias,
+                           input_keep_prob = cfg.input_keep_prob,
+                           output_keep_prob = cfg.output_keep_prob,
+                           bias_init_vector=bias_init_vector)
+    
+        tf_loss, tf_video, tf_caption, tf_caption_mask, _ = model_train.build_model("training")
 
-    saver = tf.train.Saver(max_to_keep=cfg.max_to_keep)
     with tf.variable_scope(tf.get_variable_scope(), reuse=False):
         train_op = tf.train.AdamOptimizer(cfg.learning_rate).minimize(tf_loss)
+    
+    saver = tf.train.Saver(max_to_keep=cfg.max_to_keep)
     sess.run(tf.global_variables_initializer())
     
     model_counter = 0
@@ -418,6 +421,7 @@ if __name__ == '__main__':
     if not args.dataset:
         parser.print_help()
         exit(1)
+
     if not args.train_stage:
         if args.checkpoint is None:
             parser.print_help()
