@@ -51,7 +51,7 @@ def extract_all_features(video_id):
     
     with tf.Session() as sess:
         create_graph()
-        video_frames = glob.glob(path.join(dst,'*.jpg'))
+        video_frames = sorted(glob.glob(path.join(dst,'*.jpg')))
         
         if not path.exists(descriptors_save_path):
             makedirs(descriptors_save_path)
@@ -269,7 +269,7 @@ def create_video_example(video_id, cfg, checkpoint, input_sentence = "a man is d
     saliency_maps = gaussian_filter_3d(saliency_maps, sigma = [2, 1, 1])
      
     #perform overlay
-    video_frames = glob.glob(path.join(frames_path,video_id,'*.jpg'))
+    video_frames = sorted(glob.glob(path.join(frames_path,video_id,'*.jpg')))
     assert len(video_frames) == saliency_maps.shape[0]
     if not path.exists(path.join(path_to_save_figures, video_id)):
         makedirs(path.join(path_to_save_figures, video_id))
