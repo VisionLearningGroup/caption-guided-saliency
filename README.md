@@ -32,7 +32,12 @@ The code also uses `ffmpeg` for data preprocessing.
 
 **Obtain the dataset you need:**
 
-  * [MSR-VTT](http://ms-multimedia-challenge.com/dataset): train_val_videos.zip, train_val_annotation.zip, test_videos.zip, test_annotation.zip
+  * [MSR-VTT](http://ms-multimedia-challenge.com/dataset): 
+  [train_val_videos.zip](http://202.38.69.241/static/resource/train_val_videos.zip),
+  [train_val_annotation.zip](http://202.38.69.241/static/resource/train_val_annotation.zip), 
+  [test_videos.zip](http://202.38.69.241/static/resource/test_videos.zip), 
+  [test_videodatainfo.json](http://ms-multimedia-challenge.com/static/resource/test_videodatainfo.json)
+  
   * [Flickr30k](http://shannon.cs.illinois.edu/DenotationGraph/): flickr30k.tar.gz, flickr30k-images.tar
 
 and unpack files into their respective directories under ```./DATA/```.
