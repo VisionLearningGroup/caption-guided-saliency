@@ -208,7 +208,7 @@ def get_superimposed_frame(video_id, frame_filename, saliency_frame, sentence):
         saliency = generate_saliency(saliency_frame[word_idx].reshape(8, 8),
                                      (SCALE, SCALE), norm = False)
         saliency = np.asarray(saliency) / 255.
-        plt.imshow(saliency, vmin=0.0, vmax=1.0, alpha = 0.5)
+        plt.imshow(saliency, vmin=0.0, vmax=1.0, alpha = 0.5, cmap="jet")
         
         fontsize = 12 + (h - 2) * 2 
         plt.text(6, 18, sentence[word_idx], fontproperties = font0,
